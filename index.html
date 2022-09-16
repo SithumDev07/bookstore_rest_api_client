@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booksy</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+    <link rel="stylesheet" href="./src/style/bootstrap-icons.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+  </head>
+  <body class="bg-booksy-white">
+    <nav class="flex items-center justify-between py-7 container mx-auto px-6">
+      <p translate="no" class="font-booksy-brand text-4xl font-semibold">
+        Booksy
+      </p>
+      <div
+        class="px-7 py-3 relative bg-booksy-gray overflow-hidden rounded-md min-w-[40vw]"
+      >
+        <input
+          class="bg-transparent"
+          type="text"
+          name="search"
+          id="searchField"
+          placeholder="Search By Author, Title, Name..."
+        />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-search absolute top-1/2 transform -translate-y-1/2 right-4"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+          />
+        </svg>
+      </div>
+      <div class="flex items-center space-x-5">
+        <button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-heart-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+            />
+          </svg>
+        </button>
+        <a href="#">EN</a>
+      </div>
+    </nav>
+
+    <!-- Tab Navigator -->
+    <ul class="mx-auto flex items-center space-x-10 container justify-center">
+      <li>Home</li>
+      <li>Best Seller</li>
+      <li>Category</li>
+      <li>Find a store</li>
+      <li>Blog</li>
+    </ul>
+    <!-- End Tab Navigator -->
+
+    <!-- Home Banner -->
+    <div
+      class="container overflow-hidden mx-auto max-h-[45vh] flex justify-end mt-8 rounded-xl relative bg-booksy-bg"
+    >
+      <div class="absolute top-1/2 transform -translate-y-1/2 left-12">
+        <h3 class="text-5xl font-semibold mb-1 text-booksy-primary">
+          Build Your Library
+        </h3>
+        <p class="text-sm text-booksy-secondary">
+          Buy two selected books and get one for free
+        </p>
+        <button
+          type="button"
+          class="bg-booksy-secondary rounded-xl px-4 py-3 mt-3 text-booksy-white"
+        >
+          View All
+        </button>
+      </div>
+      <img src="./src/assets/banner2.png" class="h-full object-cover" alt="" />
+    </div>
+    <!-- End Home Banner -->
+    <div class="container mx-auto flex justify-between mt-8">
+      <h4 class="font-semibold text-3xl text-booksy-primary">Popular Now</h4>
+      <a href="viewall">View All</a>
+    </div>
+    <div
+      class="books-container grid grid-cols-6 mt-5 gap-8"
+      id="booksContainer"
+    >
+      <div class="book overflow-hidden grid place-items-center">
+        <img
+          src="./src/assets/books/harry_potter.jpg"
+          alt="Harry Potter"
+          class="rounded-xl w-auto h-52"
+        />
+        <h4 class="text-base mt-3 text-center">
+          Harry Potter - Deathly Halloweens
+        </h4>
+        <p class="mt-2 text-xs text-booksy-secondary">J K Rowling</p>
+        <div
+          class="star-container flex items-center space-x-2 mt-1 text-booksy-gold"
+        >
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-half"></i>
+          <i class="bi bi-star"></i>
+        </div>
+      </div>
+      <div class="book overflow-hidden grid place-items-center">
+        <img
+          src="./src/assets/books/harry_potter.jpg"
+          alt="Harry Potter"
+          class="rounded-xl w-auto h-52"
+        />
+        <h4 class="text-base mt-3 text-center">
+          Harry Potter - Deathly Halloweens
+        </h4>
+        <p class="mt-2 text-xs text-booksy-secondary">J K Rowling</p>
+        <div
+          class="star-container flex items-center space-x-2 mt-1 text-booksy-gold"
+        >
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-half"></i>
+          <i class="bi bi-star"></i>
+        </div>
+      </div>
+      <div class="book overflow-hidden grid place-items-center">
+        <img
+          src="./src/assets/books/harry_potter.jpg"
+          alt="Harry Potter"
+          class="rounded-xl w-auto h-52"
+        />
+        <h4 class="text-base mt-3 text-center">
+          Harry Potter - Deathly Halloweens
+        </h4>
+        <p class="mt-2 text-xs text-booksy-secondary">J K Rowling</p>
+        <div
+          class="star-container flex items-center space-x-2 mt-1 text-booksy-gold"
+        >
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-half"></i>
+          <i class="bi bi-star"></i>
+        </div>
+      </div>
+      <div class="book overflow-hidden grid place-items-center">
+        <img
+          src="./src/assets/books/harry_potter.jpg"
+          alt="Harry Potter"
+          class="rounded-xl w-auto h-52"
+        />
+        <h4 class="text-base mt-3 text-center">
+          Harry Potter - Deathly Halloweens
+        </h4>
+        <p class="mt-2 text-xs text-booksy-secondary">J K Rowling</p>
+        <div
+          class="star-container flex items-center space-x-2 mt-1 text-booksy-gold"
+        >
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-half"></i>
+          <i class="bi bi-star"></i>
+        </div>
+      </div>
+      <div class="book overflow-hidden grid place-items-center">
+        <img
+          src="./src/assets/books/harry_potter.jpg"
+          alt="Harry Potter"
+          class="rounded-xl w-auto h-52"
+        />
+        <h4 class="text-base mt-3 text-center">
+          Harry Potter - Deathly Halloweens
+        </h4>
+        <p class="mt-2 text-xs text-booksy-secondary">J K Rowling</p>
+        <div
+          class="star-container flex items-center space-x-2 mt-1 text-booksy-gold"
+        >
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-half"></i>
+          <i class="bi bi-star"></i>
+        </div>
+      </div>
+      <div class="book overflow-hidden grid place-items-center">
+        <img
+          src="./src/assets/books/harry_potter.jpg"
+          alt="Harry Potter"
+          class="rounded-xl w-auto h-52"
+        />
+        <h4 class="text-base mt-3 text-center">
+          Harry Potter - Deathly Halloweens
+        </h4>
+        <p class="mt-2 text-xs text-booksy-secondary">J K Rowling</p>
+        <div
+          class="star-container flex items-center space-x-2 mt-1 text-booksy-gold"
+        >
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-half"></i>
+          <i class="bi bi-star"></i>
+        </div>
+      </div>
+      <div class="book overflow-hidden grid place-items-center">
+        <img
+          src="./src/assets/books/harry_potter.jpg"
+          alt="Harry Potter"
+          class="rounded-xl w-auto h-52"
+        />
+        <h4 class="text-base mt-3 text-center">
+          Harry Potter - Deathly Halloweens
+        </h4>
+        <p class="mt-2 text-xs text-booksy-secondary">J K Rowling</p>
+        <div
+          class="star-container flex items-center space-x-2 mt-1 text-booksy-gold"
+        >
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-half"></i>
+          <i class="bi bi-star"></i>
+        </div>
+      </div>
+      <div class="book overflow-hidden grid place-items-center">
+        <img
+          src="./src/assets/books/harry_potter.jpg"
+          alt="Harry Potter"
+          class="rounded-xl w-auto h-52"
+        />
+        <h4 class="text-base mt-3 text-center">
+          Harry Potter - Deathly Halloweens
+        </h4>
+        <p class="mt-2 text-xs text-booksy-secondary">J K Rowling</p>
+        <div
+          class="star-container flex items-center space-x-2 mt-1 text-booksy-gold"
+        >
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-half"></i>
+          <i class="bi bi-star"></i>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
