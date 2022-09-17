@@ -1,20 +1,24 @@
 $(window).ready(async function () {
   let editMode = false;
 
-  await fetch("http://localhost:9000/micro/resources/book/all", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data && data.length > 0)
-        populateBooks(
-          document.getElementById("booksContainer"),
-          data.filter((item) => item?.rating >= 3)
-        );
-    });
+  async function fetchMovies() {
+    await fetch("http://localhost:9000/micro/resources/book/all", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data && data.length > 0)
+          populateBooks(
+            document.getElementById("booksContainer"),
+            data.filter((item) => item?.rating >= 3)
+          );
+      });
+  }
+
+  await fetchMovies();
 
   function populateBooks(element, books = []) {
     books.map((item) => {
@@ -24,19 +28,23 @@ $(window).ready(async function () {
         "overflow-hidden",
         "grid",
         "place-items-center",
-        "relative"
+        "relative",
+        "group"
       );
       const book = `
-      <div class="absolute z-10 top-0 left-0 right-0 bottom-0 w-full h-full bg-black/40 flex items-center justify-center">
-        <button type="button" class="text-red-500">
-          <i class="bi bi-dash-circle-fill"></i>
+      
+        <div class="relative rounded-xl overflow-hidden w-36 h-52 flex items-center justify-center">
+          <img
+            src="${item?.imageUrl}"
+            alt="${item?.ISBN}"
+            class="w-full h-full"
+          />
+          <div class="edit-mode-container absolute hidden z-10 top-0 left-0 right-0 bottom-0 w-full h-full backdrop-blur-sm bg-black/80 items-center justify-center">
+        <button type="button" deleting="${item?.id}" class="text-red-500 delete-book">
+          <i class="bi bi-dash-circle-fill text-3xl"></i>
         </button>
       </div>
-        <img
-          src="${item?.imageUrl}"
-          alt="${item?.ISBN}"
-          class="rounded-xl w-auto h-52"
-        />
+        </div>
         <h4 class="text-base mt-3 text-center">
           ${item?.name}
         </h4>
@@ -107,21 +115,38 @@ $(window).ready(async function () {
       document.getElementById("editMode").classList.toggle("hidden");
     });
 
-  document.getElementById("editMode").addEventListener("click", function (e) {
-    document.getElementById("editMode").classList.toggle("hidden");
-    editMode = !editMode;
-  });
+  document
+    .getElementById("editMode")
+    .addEventListener("click", async function (e) {
+      document.getElementById("editMode").classList.toggle("hidden");
+      editMode = !editMode;
+      console.log("Edit Mode ", editMode);
+      document.getElementById("booksContainer").innerHTML = "";
+      await fetchMovies();
+      [...document.querySelectorAll(".edit-mode-container")].forEach((item) => {
+        item.classList.toggle("hidden");
+        item.classList.toggle("flex");
+      });
+    });
 
   async function removeBookById(id) {
-    await fetch("http://localhost:9000/micro/resources/book?id=" + id, {
-      headers: {
-        "content-type": "application/json",
-      },
-      method: "DELETE",
-    }).then((response) => {
-      if (response.status == 200) {
-        window.location.reload();
-      } else alert("Couldn't delete the book");
-    });
+    console.log(id);
+    // await fetch("http://localhost:9000/micro/resources/book?id=" + id, {
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   method: "DELETE",
+    // }).then((response) => {
+    //   if (response.status == 200) {
+    //     window.location.reload();
+    //   } else alert("Couldn't delete the book");
+    // });
   }
+
+  [...document.querySelectorAll(".delete-book")].forEach((item) => {
+    console.log("Deleting");
+    item.addEventListener("click", async function (e) {
+      console.log(e.target.getAttribute("deleting"));
+    });
+  });
 });
